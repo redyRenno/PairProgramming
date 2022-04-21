@@ -10,19 +10,18 @@
 </head>
 
 <body>
-  <form action="/user/login" method="post">
-    <label for="fname">E-mail :</label><br>
-    <input type="text" name="email"><br>
-    <label for="lname">Password:</label><br>
-    <input type="password" name="password"><br>
-    <% if (error) { %>
-      <span style="color: red;">
-        <%= error %>
-      </span>
-      <br><br>
-      <% } %>
+  <% if (error) { %>
+    <p style="color: red;">
+      <%= error %>
+    </p>
+    <% } %>
+      <form action="/login" method="post">
+        <label for="fname">E-mail :</label><br>
+        <input type="text" name="email"><br>
+        <label for="lname">Password:</label><br>
+        <input type="password" name="password"><br><br>
         <input type="submit" value="Login">
-  </form>
+      </form>
 </body>
 
 </html>
