@@ -1,0 +1,52 @@
+[
+  {
+    "email": "smiguet0@123-reg.co.uk",
+    "password": "56F75rQtra",
+    "role": "Instructor"
+  },
+  {
+    "email": "fgaley1@creativecommons.org",
+    "password": "yGH2TH",
+    "role": "Student"
+  },
+  {
+    "email": "wlynas2@phpbb.com",
+    "password": "e4j0dSy6N5",
+    "role": "Instructor"
+  },
+  {
+    "email": "ptybalt3@gmpg.org",
+    "password": "izRYQlox1ty",
+    "role": "Student"
+  },
+  {
+    "email": "bpatel4@tumblr.com",
+    "password": "K04lleXp",
+    "role": "Student"
+  },
+  {
+    "email": "wscally5@goodreads.com",
+    "password": "wNonVF3",
+    "role": "Student"
+  },
+  {
+    "email": "ldarrigo6@bbb.org",
+    "password": "1ElZBH",
+    "role": "Student"
+  },
+  {
+    "email": "mcosely7@rambler.ru",
+    "password": "qEo8Nb",
+    "role": "Student"
+  },
+  {
+    "email": "bivankov8@flickr.com",
+    "password": "rt4otS4S8W",
+    "role": "Student"
+  },
+  {
+    "email": "jmatas9@dagondesign.com",
+    "password": "8J8tsv3",
+    "role": "Student"
+  }
+]

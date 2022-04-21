@@ -1,0 +1,72 @@
+[
+  {
+    "firstName": "Quill",
+    "lastName": "Coghlin",
+    "birthDate": "2010-05-19",
+    "phoneNumber": "4367454649",
+    "UserId": 1
+  },
+  {
+    "firstName": "Hewitt",
+    "lastName": "Jouannot",
+    "birthDate": "1998-05-09",
+    "phoneNumber": "2596438089",
+    "UserId": 2
+  },
+  {
+    "firstName": "Beryl",
+    "lastName": "Cudworth",
+    "birthDate": "2006-04-09",
+    "phoneNumber": "5236807956",
+    "UserId": 3
+  },
+  {
+    "firstName": "Anna",
+    "lastName": "Revett",
+    "birthDate": "1987-12-05",
+    "phoneNumber": "7031947669",
+    "UserId": 4
+  },
+  {
+    "firstName": "Gilli",
+    "lastName": "IoannUserIdis",
+    "phoneNumber": "3906683087",
+    "birthDate": "2009-09-04",
+    "UserId": 5
+  },
+  {
+    "firstName": "Janeczka",
+    "lastName": "Stille",
+    "birthDate": "1990-11-19",
+    "phoneNumber": "7385819125",
+    "UserId": 6
+  },
+  {
+    "firstName": "Dian",
+    "lastName": "Flancinbaum",
+    "birthDate": "1987-02-23",
+    "phoneNumber": "9674760628",
+    "UserId": 7
+  },
+  {
+    "firstName": "Daffi",
+    "lastName": "Shephard",
+    "birthDate": "2008-01-01",
+    "phoneNumber": "5187233521",
+    "UserId": 8
+  },
+  {
+    "firstName": "Selena",
+    "lastName": "Flay",
+    "birthDate": "1990-03-25",
+    "phoneNumber": "8306885740",
+    "UserId": 9
+  },
+  {
+    "firstName": "Ross",
+    "lastName": "Baptist",
+    "birthDate": "1993-07-23",
+    "phoneNumber": "6685431393",
+    "UserId": 10
+  }
+]
