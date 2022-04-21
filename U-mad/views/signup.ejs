@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+</head>
+
+<body>
+  <form action="/user/signup" method="post">
+    <label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="firstName"><br>
+
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lastName"><br>
+
+    <label for="birthDate">Birth Date:</label><br>
+    <input type="date" id="birthDate" name="birthDate"><br>
+
+    <label for="phoneNumber">Phone Number:</label><br>
+    <input type="number" id="phoneNumber" name="phoneNumber"><br>
+
+    <label for="email">E-mail:</label><br>
+    <input type="email" id="email" name="email"><br>
+
+    <label for="lname">Password:</label><br>
+    <input type="text" id="lname" name="password"><br>
+
+    <label for="role">Sign Up as:</label><br>
+    <select name="role" id="cars">
+      <option value="Instructor">Instructor</option>
+      <option value="Student">Student</option>
+    </select><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+</body>
+
+</html>
