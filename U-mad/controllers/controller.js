@@ -1,4 +1,4 @@
-const {User, UserDetail, Course, Category} = require('../models/index');
+const {User, UserDetail, UserCourse, Course, Category} = require('../models/index');
 
 class Controller{
   static courseList(request, response) {
@@ -14,32 +14,39 @@ class Controller{
 
   static courseDetail(request, response) {
     const {courseId} = request.params;
+    let course;
+    let totalStudent;
 
-    User.findAll({include: UserDetail}).then((data) => {response.send(data)})
+    Course.findAll({
+      include: {
+        model: User,
+        include: UserDetail
+      }
+    },{
+      where: {
+        id: courseId
+      }
+    }).then((data) => {
+      course = data[0];
 
-    // Course.findAll({
-    //   include: {
-    //     model: User,
-    //     include: [{
-    //       model: UserDetail,
-    //       rightJoin
-    //     }]
-        
-    //   }
-    // },{
-    //   where: {
-    //     id: courseId
-    //   }
-    // })
-    //   .then((data) => {
-    //     // response.render('courseDetail', {
-    //     //   course: data
-    //     // })
-    //     response.send(data)
-    //   })
-    //   .catch((err) => {
-    //     response.send(err)
-    //   })
+      return UserCourse.count({
+        where: {
+          CourseId: course.id
+        }
+      })
+    })
+      .then((data) => {
+        totalStudent = data
+
+        response.render('courseDetail', {
+          course,
+          totalStudent
+        })
+  
+      })
+      .catch((err) => {
+        response.send(err)
+      })
   }
 }
 

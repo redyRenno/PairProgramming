@@ -7,7 +7,7 @@
   <title>Course Detail</title>
 </head>
 <body>
-  <h1>Course name</h1>
+  <h1><%= course.name%></h1>
   <iframe width="560" 
     height="315" 
     src="https://www.youtube.com/embed/irF4ZaLNFSM" 
@@ -16,8 +16,8 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen>
   </iframe>
-  <h2>Instructor Name</h2>
-  <p>Description</p>
-  <p>Students who's taking this course</p>
+  <h2><%= course.User.UserDetail.fullName%></h2>
+  <p style="max-width: 560px;"><%= course.description%></p>
+  <p>Students who's taking this course : <%= totalStudent%></p>
 </body>
 </html>
