@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Form Edit Course</h1>
+  <form action="/course/<%= course.id%>/edit" method="post">
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name" value="<%= course.name%>"><br><br>
+    <label for="videoURL">Video URL</label><br>
+    <input type="text" id="videoURL" name="videoURL" value="<%= course.videoURL%>"><br><br>
+    <label for="description">Description</label><br>
+    <textarea name="description" id="description" cols="50" rows="10"><%= course.description%></textarea><br><br>
+    <label for="category">Category</label><br>
+    <select name="category" id="category">
+      <option value="<%= category.id%>" selected hidden><%= category.name%></option>
+      <% categories.forEach((el) => { %>
+        <option value="<%= el.id%>"><%= el.name%></option>
+      <% }) %>
+    </select><br><br>
+
+    <input type="submit" value="Edit">
+  </form> 
+</body>
+</html>
