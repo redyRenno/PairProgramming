@@ -4,7 +4,6 @@ const router = express.Router();
 const UserController = require("../controllers/userController")
 
 const isLoggedIn = (req, res, next) => {
-  console.log(req.session)
   if (!req.session.userId) {
     const error = "Please login First!"
     res.redirect(`/login?error=${error}`)
@@ -33,6 +32,5 @@ router.get("/logout", UserController.logout)
 router.get('/', (req, res) => {
   res.render('home');
 });
-
 
 module.exports = router
