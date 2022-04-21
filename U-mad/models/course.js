@@ -21,6 +21,33 @@ module.exports = (sequelize, DataTypes) => {
     videoURL: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
+    hook: {
+      beforeValidate: (category, options) => {
+        switch(category.price) {
+          case 1:
+            category.price = 150000;
+            break;
+          case 2:
+            category.price = 170000;
+            break;
+          case 3:
+            category.price = 350000;
+            break;
+          case 4:
+            category.price = 125000;
+            break;
+          case 5:
+            category.price = 145000;
+            break;
+          case 6:
+            category.price = 160000;
+            break;
+          case 7:
+            category.price = 150000;
+            break;
+        }
+      }
+    },
     sequelize,
     modelName: 'Course',
   });
