@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require("../controllers/userController")
+const courses = require('./course')
 
 const isLoggedIn = (req, res, next) => {
   console.log(req.session)
@@ -34,5 +35,5 @@ router.get('/', (req, res) => {
   res.render('home');
 });
 
-
+router.use('/course', courses)
 module.exports = router
