@@ -7,8 +7,6 @@ class Controller{
     User.findByPk(1)
       .then((data) => {
         user = data
-
-        
       })
   }
 
@@ -61,13 +59,10 @@ class Controller{
 
     Course.create({
       name: name,
-      price: category,
       videoURL: videoURL,
       description: description,
       UserId: '1',
       CategoryId: +category
-    }, {
-      individualHooks: true
     }).then((data) => {
       response.send('Berhasil tersimpan')
     })
@@ -114,14 +109,12 @@ class Controller{
     console.log(+category, '>>>>>>>>>>>>');
     Course.update({
       name: name,
-      price: +category,
       videoURL: videoURL,
       description: description,
       UserId: '1',
-      CategoryId: category
+      CategoryId: +category
     }, {
-      where: { id: +courseId }, 
-      individualHooks: true 
+      where: { id: +courseId }
     })
       .then((data) => {
         response.send('Berhasil edit')
