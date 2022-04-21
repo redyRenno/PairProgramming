@@ -17,10 +17,17 @@ module.exports = (sequelize, DataTypes) => {
   UserDetail.init({
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
-    birthOfDate: DataTypes.DATE,
-    phoneNumber: DataTypes.INTEGER,
+    birthDate: DataTypes.DATE,
+    phoneNumber: DataTypes.BIGINT(14),
     UserId: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate(instance, options) {
+        const num = `${instance.phoneNumber}`.replace("0", "62")
+
+        instance.phoneNumber = +num
+      }
+    },
     sequelize,
     modelName: 'UserDetail',
   });
