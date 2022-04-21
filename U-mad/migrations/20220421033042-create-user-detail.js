@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false
       },
       phoneNumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT(14),
         allowNull: false
       },
       UserId: {
