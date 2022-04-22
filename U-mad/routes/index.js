@@ -1,5 +1,6 @@
 "use strict"
 const express = require('express');
+const Controller = require('../controllers/controller');
 const router = express.Router();
 const UserController = require("../controllers/userController")
 const courses = require('./course')
@@ -13,14 +14,14 @@ const isLoggedIn = (req, res, next) => {
     next()
   }
 }
-const isInstructor = (req, res, next) => {
-  if (req.session.role !== "Instructor") {
-    const error = "You Don't Have Access for This Feature"
-    res.redirect(`/login?error=${error}`)
-  } else {
-    next()
-  }
-}
+// const isInstructor = (req, res, next) => {
+//   if (req.session.role !== "Instructor") {
+//     const error = "You Don't Have Access for This Feature"
+//     res.redirect(`/login?error=${error}`)
+//   } else {
+//     next()
+//   }
+// }
 
 router.get("/signup", UserController.formSignUp)
 router.post("/signup", UserController.postSignUp)
@@ -31,9 +32,7 @@ router.use(isLoggedIn)
 
 router.get("/logout", UserController.logout)
 
-router.get('/', (req, res) => {
-  res.render('home');
-});
+router.get('/', Controller.courseList);
 
 router.use('/course', courses)
 module.exports = router

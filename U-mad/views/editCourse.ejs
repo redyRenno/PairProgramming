@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Edit Course</title>
+  <%- include('./partials/style')%>
 </head>
 <body>
+  <%- include('./partials/navbar')%>
   <h1>Form Edit Course</h1>
   <form action="/course/<%= course.id%>/edit" method="post">
     <label for="name">Name</label><br>

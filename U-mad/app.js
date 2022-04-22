@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-const express = require('express')
-const routes = require('./routes/index')
-const app = express()
-const port = 3000
-
-app.set('view engine', 'ejs');
-app.use(express.urlencoded({extended: false}))
-app.use('/', routes)
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-=======
 "use strict"
 const express = require('express');
 const app = express();
@@ -35,5 +22,5 @@ app.use(routes);
 
 app.listen(port, function () {
   console.log("this app running in port :", port);
->>>>>>> 507d251d89c354a45d6fb4961994de9830606ae1
+
 })

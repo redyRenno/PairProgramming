@@ -1,18 +1,76 @@
 const {User, UserDetail, UserCourse, Course, Category} = require('../models/index');
+const { Op } = require("sequelize");
 
 class Controller{
   static courseList(request, response) {
+    const {userId, role} = request.session;
+    const {myCourse} = request.query;
     let user;
 
-    User.findByPk(1)
-      .then((data) => {
-        user = data
-
-        
+    User.findAll({
+      where: {
+        id: +userId
+      }, 
+      include: {
+        model: Course
+      }
       })
+        .then((data) => {
+          response.send(data)
+        })
+        .catch((err) => {
+          response.send(err)
+        })
+
+    
+      
+    // let filter;
+    // if(!myCourse) {
+    //   filter = {
+    //     UserId: {[Op.ne]: userId}
+    //   }
+    // } else {
+    //   filter = {
+    //     UserId: userId
+    //   }
+    // }
+    
+    // User.findByPk(+userId, {
+    //   include: {model: UserDetail}
+    // })
+    //   .then((data) => {
+    //     user = data
+    //     console.log(user);
+    //     if (role === 'Student') {
+    //       return User.findAll({
+    //         where: filter,
+    //         include: Course
+    //       })
+    //     } else {
+    //       return Course.findAll({
+    //         where: filter,
+    //         include: {
+    //           model: Category
+    //         }
+    //       })
+    //     }
+    //   })
+    //   .then((data) => {
+    //     // response.render('home', {
+    //     //   user,
+    //     //   courses: data,
+    //     //   role,
+    //     //   myCourse
+    //     // })
+    //     response.send(data)
+    //   })
+    //   .catch((err) => {
+    //     response.send(err)
+    //   })
   }
 
   static courseDetail(request, response) {
+    const {userId, role} = request.session;
     const {courseId} = request.params;
     console.log(courseId);
     let course;
@@ -36,7 +94,42 @@ class Controller{
         totalStudent = data
         response.render('courseDetail', {
           course,
-          totalStudent
+          totalStudent,
+          role
+        })
+      })
+      .catch((err) => {
+        response.send(err)
+      })
+  }
+
+  static myCourseDetail(request, response) {
+    const {userId, role} = request.session;
+    const {courseId} = request.params;
+    console.log(courseId);
+    let course;
+    let totalStudent;
+
+    Course.findByPk(+courseId, {
+      include: {
+        model: User,
+        include: UserDetail
+      }
+    }).then((data) => {
+      course = data;
+
+      return UserCourse.count({
+        where: {
+          CourseId: course.id
+        }
+      })
+    })
+      .then((data) => {
+        totalStudent = data
+        response.render('myCourseDetail', {
+          course,
+          totalStudent,
+          role
         })
       })
       .catch((err) => {
@@ -58,18 +151,19 @@ class Controller{
 
   static addCourse(request, response) {
     const {name, videoURL, description, category} = request.body;
+    const {userId, role} = request.session;
 
     Course.create({
       name: name,
       price: category,
       videoURL: videoURL,
       description: description,
-      UserId: '1',
+      UserId: userId,
       CategoryId: +category
     }, {
       individualHooks: true
     }).then((data) => {
-      response.send('Berhasil tersimpan')
+      response.redirect('/course/myCourse?myCourse=true')
     })
     .catch((err) => {
       response.send(err)
@@ -110,6 +204,7 @@ class Controller{
   static editCourse(request, response) {
     const {courseId} = request.params;
     const {name, videoURL, description, category} = request.body;
+    const {userId, role} = request.session;
 
     console.log(+category, '>>>>>>>>>>>>');
     Course.update({
@@ -117,14 +212,14 @@ class Controller{
       price: +category,
       videoURL: videoURL,
       description: description,
-      UserId: '1',
-      CategoryId: category
+      UserId: userId,
+      CategoryId: +category
     }, {
       where: { id: +courseId }, 
       individualHooks: true 
     })
       .then((data) => {
-        response.send('Berhasil edit')
+        response.redirect('/course/myCourse?myCourse=true')
       })
       .catch((err) => {
         console.log(err);
@@ -141,7 +236,7 @@ class Controller{
       }
     })
       .then((data) => {
-        response.send('Berhasil dihapus')
+        response.redirect('/course/myCourse?myCourse=true')
       })
       .catch((err) => {
         response.send(err)

@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasOne(models.UserDetail)
       this.hasMany(models.Course)
+      // this.
       this.belongsToMany(models.Course, { through: models.UserCourse })
     }
   }

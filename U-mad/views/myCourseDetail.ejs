@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Course Detail</title>
+  <title>My Course Detail</title>
   <%- include('./partials/style')%>
 </head>
 <body>
@@ -21,8 +21,10 @@
   <h2><%= course.User.UserDetail.fullName%></h2>
   <p style="max-width: 560px;"><%= course.description%></p>
   <p>Students who's taking this course : <%= totalStudent%></p><br>
-  <% if(role === 'Student') { %>
-    <a href="http://"><button type="button">Buy</button></a>
+
+  <% if(role === 'Instructor') { %>
+    <a href="/course/<%= course.id%>/edit"><button type="button">Edit</button></a>
+    <a href="/course/<%= course.id%>/delete"><button type="button">Delete</button></a>
   <% } %>
     
 </body>

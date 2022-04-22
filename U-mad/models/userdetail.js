@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       return this.firstName + ' ' + this.lastName
     }
 
-    static associate(models) {
+        static associate(models) {
       // define association here
       this.belongsTo(models.User)
     }

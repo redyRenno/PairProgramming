@@ -6,12 +6,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
+  <%- include('./partials/style')%>
 </head>
 
 <body>
-  <p>This is your home page</p>
-
-  <button onclick="location.href='/logout'">Log out</button>
+  <%- include('./partials/navbar')%>
+  <% if(myCourse){ %>
+    <h1>My Course</h1>
+  <% } %>
+  <h2>Hallo, <%= user.UserDetail.fullName%></h2>
+  <% if(myCourse && role === 'Instructor'){ %>
+    <a href="/course/add"><button type="button">Add Course</button></a><br><br>
+  <% } %>
+  <table border="1">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>
+    <% courses.forEach((el) => { %>
+      <tr>
+        <td><%= el.name%></td>
+        <td><%= el.toRupiah()%></td>
+        <td><%= el.Category.name%></td>
+        <td>
+          <% if(myCourse){ %>
+            <a href="/course/<%= el.id%>/myCourse"><button type="button">See Detail</button></a>
+          <% } else { %>
+            <% if(role === 'Student') { %>
+              <a href="/course/<%= el.id%>"><button type="button">See Detail Student</button></a>
+              <% } else { %>
+                <a href="/course/<%= el.id%>"><button type="button">See Detail Instructor</button></a>
+            <% } %>
+          <% } %>
+        </td>
+      </tr>
+    <% })%>
+  </table><br><br>
 </body>
-
 </html>

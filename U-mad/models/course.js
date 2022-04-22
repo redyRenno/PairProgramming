@@ -9,15 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+     toRupiah() {
+      return `Rp.  ${this.price.toLocaleString('id-ID')},00` 
+    }
+
     static associate(models) {
       // define association here
       this.belongsTo(models.User)
+      this.belongsTo(models.Category)
       this.belongsToMany(models.User, { through: models.UserCourse })
     }
   }
   Course.init({
     name: DataTypes.STRING,
-    price: DataTypes.INTEGER,
+    price: DataTypes.BIGINT,
     videoURL: DataTypes.STRING,
     description: DataTypes.TEXT,
     UserId: DataTypes.INTEGER,
@@ -25,10 +30,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Course',
-    hook: {
+    hooks: {
       beforeValidate: (course, options) => {
-        console.log(course.price,'<<<<<<<<<<<');
-        switch(course.price) {
+        console.log(course.CategoryId,'<<<<<<<<<<<');
+        switch(course.CategoryId) {
           case 1:
             course.price = 150000;
             break;
